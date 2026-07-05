@@ -8,7 +8,7 @@ import { Avis } from '../components/Components'
 import { Toast } from '../components/Components'
 import Director from '../components/Director'
 import { RecipesManager, EmployeesManager, StocksManager, Settings } from '../components/Forms'
-import MultiSite from '../components/MultiSite'
+import MultiSiteV2 from '../components/MultiSiteV2'
 import PlanningV7 from '../components/PlanningV7'
 import DevisManager from '../components/Devis'
 import {
@@ -165,7 +165,7 @@ export default function DashboardV6({ restaurant: initialRestaurant, session, on
         {page === 'avis'       && <Avis restaurant={restaurant} toast={toast} />}
         {page === 'devis'      && <DevisManager restaurant={restaurant} toast={toast} />}
         {page === 'journal'    && <Journal restaurant={restaurant} />}
-        {page === 'multisite'  && <MultiSite userId={session.user.id} toast={toast} />}
+        {page === 'multisite'  && <MultiSiteV2 userId={session.user.id} toast={toast} />}
         {page === 'parametres' && <Settings restaurant={restaurant} toast={toast} onUpdate={setRestaurant} />}
 
         {page === 'prevision' && <PrevisionV6 restaurant={restaurant} />}
