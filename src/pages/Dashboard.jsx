@@ -9,7 +9,7 @@ import { Toast } from '../components/Components'
 import Director from '../components/Director'
 import { RecipesManager, EmployeesManager, StocksManager, Settings } from '../components/Forms'
 import MultiSite from '../components/MultiSite'
-import PlanningManager from '../components/Planning'
+import PlanningV7 from '../components/PlanningV7'
 import DevisManager from '../components/Devis'
 import {
   exportPlanningExcel, exportPlanningPDF,
@@ -161,7 +161,7 @@ export default function DashboardV6({ restaurant: initialRestaurant, session, on
         {page === 'recettes'   && <RecipesManager restaurant={restaurant} toast={toast} />}
         {page === 'stocks'     && <StocksManager restaurant={restaurant} toast={toast} />}
         {page === 'equipe'     && <EmployeesManager restaurant={restaurant} toast={toast} />}
-        {page === 'planning'   && <PlanningManager restaurant={restaurant} toast={toast} />}
+        {page === 'planning'   && <PlanningV7 restaurant={restaurant} toast={toast} />}
         {page === 'avis'       && <Avis restaurant={restaurant} toast={toast} />}
         {page === 'devis'      && <DevisManager restaurant={restaurant} toast={toast} />}
         {page === 'journal'    && <Journal restaurant={restaurant} />}
