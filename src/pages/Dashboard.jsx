@@ -2,8 +2,9 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { supabase } from '../lib/supabase'
 import Copilote from '../components/Copilote'
 import { FoodCost } from '../components/Components'
+import DevisManager from '../components/Devis'
 import { Finance } from '../components/Components'
-import { Planning } from '../components/Components'
+import PlanningManager from '../components/Planning'
 import { Avis } from '../components/Components'
 import { Journal } from '../components/Components'
 import { Toast } from '../components/Components'
@@ -29,6 +30,7 @@ const PAGES = [
   { key: 'haccp',      icon: '🌡️', label: 'HACCP',       group: 'Exploitation' },
   { key: 'avis',       icon: '⭐',  label: 'Avis',        group: 'Clients' },
   { key: 'exports',    icon: '📤',  label: 'Exports',     group: 'Outils' },
+  { key: 'devis',      icon: '📋',  label: 'Devis',       group: 'Outils' },
   { key: 'journal',    icon: '📜',  label: 'Journal IA',  group: 'Outils' },
   { key: 'parametres', icon: '⚙️', label: 'Paramètres',  group: 'Outils' },
 ]
@@ -156,13 +158,14 @@ export default function Dashboard({ restaurant: initialRestaurant, session, onLo
         {/* Pages */}
         {page === 'copilote'   && <Copilote restaurant={restaurant} toast={toast} onOpenChat={() => setChatOpen(true)} />}
         {page === 'finance'    && <Finance restaurant={restaurant} toast={toast} />}
-        {page === 'planning'   && <Planning restaurant={restaurant} toast={toast} />}
+        {page === 'planning'   && <PlanningManager restaurant={restaurant} toast={toast} />}
         {page === 'avis'       && <Avis restaurant={restaurant} toast={toast} />}
         {page === 'journal'    && <Journal restaurant={restaurant} />}
         {page === 'recettes'   && <RecipesManager restaurant={restaurant} toast={toast} />}
         {page === 'equipe'     && <EmployeesManager restaurant={restaurant} toast={toast} />}
         {page === 'stocks'     && <StocksManager restaurant={restaurant} toast={toast} />}
         {page === 'multisite'  && <MultiSite userId={session.user.id} toast={toast} />}
+        {page === 'devis'      && <DevisManager restaurant={restaurant} toast={toast} />}
         {page === 'parametres' && <Settings restaurant={restaurant} toast={toast} onUpdate={setRestaurant} />}
 
         {page === 'prevision' && (
