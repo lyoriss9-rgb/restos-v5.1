@@ -11,6 +11,7 @@ import { RecipesManager, EmployeesManager, StocksManager, Settings } from '../co
 import MultiSiteV2 from '../components/MultiSiteV2'
 import PlanningV7 from '../components/PlanningV7'
 import DevisManager from '../components/Devis'
+import ProfitOptimizer from '../components/ProfitOptimizer'
 import {
   exportPlanningExcel, exportPlanningPDF,
   exportPnlExcel, exportPnlPDF,
@@ -30,6 +31,7 @@ const PAGES = [
   { key: 'planning',   icon: '📅',  label: 'Planning',    group: 'Exploitation',  primary: true },
   { key: 'haccp',      icon: '🌡️', label: 'HACCP',       group: 'Exploitation',  primary: false },
   { key: 'avis',       icon: '⭐',  label: 'Avis',        group: 'Clients',       primary: true },
+  { key: 'profit',     icon: '💰',  label: 'Profit',      group: 'Exploitation',  primary: true },
   { key: 'devis',      icon: '📋',  label: 'Devis',       group: 'Outils',        primary: false },
   { key: 'exports',    icon: '📤',  label: 'Exports',     group: 'Outils',        primary: false },
   { key: 'journal',    icon: '📜',  label: 'Journal IA',  group: 'Outils',        primary: false },
@@ -163,6 +165,7 @@ export default function DashboardV6({ restaurant: initialRestaurant, session, on
         {page === 'equipe'     && <EmployeesManager restaurant={restaurant} toast={toast} />}
         {page === 'planning'   && <PlanningV7 restaurant={restaurant} toast={toast} />}
         {page === 'avis'       && <Avis restaurant={restaurant} toast={toast} />}
+        {page === 'profit'     && <ProfitOptimizer toast={toast} />}
         {page === 'devis'      && <DevisManager restaurant={restaurant} toast={toast} />}
         {page === 'journal'    && <Journal restaurant={restaurant} />}
         {page === 'multisite'  && <MultiSiteV2 userId={session.user.id} toast={toast} />}
