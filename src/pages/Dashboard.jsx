@@ -26,13 +26,13 @@ const NAV = [
   { key:'settings',  icon:'◌', label:'Paramètres',   section:'Outils' },
 ]
 
-export default function DashboardV9({ restaurant: init, session, onLogout }) {
+export default function DashboardV9({ restaurant: init, restaurants: initSites=[], session, onLogout }) {
   const [restaurant, setRestaurant] = useState(init)
   const [page, setPage] = useState('copilote')
   const [toasts, setToasts] = useState([])
   const [chatOpen, setChatOpen] = useState(false)
   const [sideOpen, setSideOpen] = useState(false)
-  const [sites, setSites] = useState([])
+  const [sites, setSites] = useState(initSites)
 
   const toast = useCallback((msg, type='ok') => {
     const id = Date.now()
@@ -41,8 +41,10 @@ export default function DashboardV9({ restaurant: init, session, onLogout }) {
   }, [])
 
   useEffect(() => {
-    supabase.from('restaurant_members').select('role, restaurants(*)').eq('user_id', session.user.id).eq('is_active', true)
-      .then(({ data }) => setSites((data || []).map(d => ({ ...d.restaurants, role: d.role }))))
+    if (initSites.length === 0) {
+      supabase.from('restaurant_members').select('role, restaurants(*)').eq('user_id', session.user.id).eq('is_active', true)
+        .then(({ data }) => setSites((data || []).map(d => ({ ...d.restaurants, role: d.role }))))
+    }
   }, [])
 
   function go(p) { setPage(p); setSideOpen(false); window.scrollTo({ top: 0 }) }
