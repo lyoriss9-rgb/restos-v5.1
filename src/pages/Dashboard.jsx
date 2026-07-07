@@ -8,6 +8,8 @@ import { Avis, Finance, Journal, Toast } from '../components/Components'
 import Director from '../components/Director'
 import ProfitOptimizer from '../components/ProfitOptimizer'
 import DevisManager from '../components/Devis'
+import Integrations from '../components/Integrations'
+import BeverageCost from '../components/BeverageCost'
 import { exportPlanningPDF, exportPlanningExcel, exportPnlPDF, exportPnlExcel, exportFoodCostPDF, exportFoodCostExcel, exportHaccpPDF } from '../components/Exports'
 
 const NAV = [
@@ -19,8 +21,10 @@ const NAV = [
   { key:'planning',  icon:'▦', label:'Planning',     section:'Exploitation' },
   { key:'equipe',    icon:'◉', label:'Équipe',       section:'Exploitation' },
   { key:'stocks',    icon:'◫', label:'Stocks',       section:'Exploitation' },
+  { key:'beverage',  icon:'◔', label:'Beverage',     section:'Exploitation' },
   { key:'avis',      icon:'◈', label:'Avis',         section:'Clients' },
   { key:'devis',     icon:'▭', label:'Devis',        section:'Outils' },
+  { key:'integrations', icon:'⇄', label:'Intégrations', section:'Outils' },
   { key:'exports',   icon:'↗', label:'Exports',      section:'Outils' },
   { key:'journal',   icon:'≡', label:'Journal IA',   section:'Outils' },
   { key:'settings',  icon:'◌', label:'Paramètres',   section:'Outils' },
@@ -136,6 +140,8 @@ export default function DashboardV9({ restaurant: init, restaurants: initSites=[
           {page==='planning'  && <PlanningV9 restaurant={restaurant} toast={toast} sites={sites} />}
           {page==='equipe'    && <EmployeesManager restaurant={restaurant} toast={toast} />}
           {page==='stocks'    && <StocksManager restaurant={restaurant} toast={toast} />}
+          {page==='beverage'  && <BeverageCost restaurant={restaurant} toast={toast} />}
+          {page==='integrations' && <Integrations restaurant={restaurant} toast={toast} />}
           {page==='avis'      && <Avis restaurant={restaurant} toast={toast} />}
           {page==='devis'     && <DevisManager restaurant={restaurant} toast={toast} />}
           {page==='journal'   && <Journal restaurant={restaurant} />}
